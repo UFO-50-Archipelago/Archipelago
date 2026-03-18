@@ -5,6 +5,7 @@ from BaseClasses import Tutorial, Region, Item, ItemClassification, Location
 from Options import OptionError
 from settings import Group, UserFilePath, LocalFolderPath, Bool
 from worlds.AutoWorld import World, WebWorld
+from worlds.generic.Rules import add_rule
 from worlds.LauncherComponents import components, Component, launch_subprocess, Type as ComponentType
 
 from .constants import *
@@ -221,6 +222,12 @@ class UFO50World(World):
         victory_location.place_locked_item(Item("Victory", ItemClassification.progression, None, self.player))
         self.multiworld.completion_condition[self.player] = lambda state: state.has("Victory", self.player)
         menu.locations.append(victory_location)
+
+        for game_name in self.goal_games:
+            string_end = " - Gold"
+            if game_name in self.options.cherry_allowed_games:
+                string_end = " - Cherry"
+            add_rule(victory_location, lambda state: state.can_reach_location(game_name + string_end, self.player))
 
         for game_name in self.included_games:
             game = ufo50_games[game_name]
