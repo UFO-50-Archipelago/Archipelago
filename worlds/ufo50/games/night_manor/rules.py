@@ -144,4 +144,4 @@ def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
     if "Night Manor" in world.options.cherry_allowed_games:
         set_rule(world.get_location("Night Manor - Cherry"),
                  rule=lambda state: state.has_all((screwdriver, gear, oil_can, piano_wire, bowl, tea_tree_oil,
-                                                   hydrogen_peroxide, cigar_butt), player))
+                                                   hydrogen_peroxide, cigar_butt, fungicide), player))
