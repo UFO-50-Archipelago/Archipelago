@@ -38,7 +38,7 @@ location_table: dict[str, LocationInfo] = {
     "Shallows Lower Left - Fuel Tank above Breakable Rocks": LocationInfo(8, "Shallows - Missile", 1, 2),  # missile
     "Shallows Upper Mid - Torpedo Upgrade at Surface": LocationInfo(27, "Shallows - Buster", 2, 4),  # buster
     "Shallows Upper Mid - Fuel Tank on Coral": LocationInfo(9, "Shallows", 1, 1),
-    "Shallows Uppper Mid - Fuel Tank behind ! Blocks": LocationInfo(6, "Shallows - Buster", 2, 3),  # buster
+    "Shallows Upper Mid - Fuel Tank behind ! Blocks": LocationInfo(6, "Shallows - Buster", 2, 3),  # buster
     "Shallows Upper Mid - Egg at Surface": LocationInfo(52, "Shallows - Buster", 1, 2),  # buster
     "Shallows Upper Mid - Fuel Tank in Floor at Surface": LocationInfo(11, "Shallows - Buster", 1, 2, Hidden.has_tell),  # buster, depth
     "Shallows Mid - Torpedo Upgrade above Breakable Rocks": LocationInfo(24, "Shallows - Missile", 3, 5),  # missile
