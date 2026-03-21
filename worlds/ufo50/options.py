@@ -157,7 +157,7 @@ class NMEarlyPin(DefaultOnToggle):
     If enabled, the Hairpin will be on the floor in the starting room on either the Bowl or Spoon checks.
     """
     internal_name = "nm_early_pin"
-    display_name = "Night Manor Early Hairpin"
+    display_name = "Night Manor - Early Hairpin"
 
 
 @dataclass
