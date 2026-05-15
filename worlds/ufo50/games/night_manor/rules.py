@@ -54,7 +54,7 @@ screwdriver = "Night Manor - Screwdriver"
 gear = "Night Manor - Gear"
 piano_wire = "Night Manor - Piano Wire"
 iron_key = "Night Manor - Iron Key"
-fungicide = "Night Manor - Fungicide"
+fungicide = "Night Manor - Fungicide Recipe"
 safe_combo = "Night Manor - Safe Combination"
 password = "Night Manor - Computer Password"
 
