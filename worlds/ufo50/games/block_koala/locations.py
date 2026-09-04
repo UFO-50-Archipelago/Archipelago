@@ -86,7 +86,7 @@ location_table: dict[str, LocationInfo] = {
 }
 
 
-sphere_1_locs: list[str] = ["Level 01"]
+sphere_1_locs: list[str] = ["Level 1", "Garden"]
 
 
 def get_locations() -> dict[str, int]:

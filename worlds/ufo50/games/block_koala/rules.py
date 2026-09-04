@@ -10,9 +10,8 @@ gate_start_bottom_left = "Block Koala - Start Gate"
 gate_bottom_left_mid_left = "Block Koala - Bottom Left Gate"
 gate_mid_left_bottom_right = "Block Koala - Centre Gate"
 gate_mid_left_top = "Block Koala - Mid Left Gate"
-gate_bottom_right_mid_right = "Block Koala - Mid Right Gate"
 gate_bottom_right_boss = "Block Koala - Boss Gate"
-gate_mid_right_top = "Block Koala - Top Right Gate"
+gate_mid_right_top = "Block Koala - Top Right Gates"
 
 def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
     player = world.player
@@ -26,7 +25,7 @@ def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
     regions["Mid Left"].connect(regions["Top"], rule=lambda state: state.has(gate_mid_left_top, player))
 
     regions["Bottom Right"].connect(regions["Boss"], rule=lambda state: state.has(gate_bottom_right_boss, player))
-    regions["Bottom Right"].connect(regions["Mid Right"], rule=lambda state: state.has(gate_bottom_right_mid_right, player))
+    regions["Bottom Right"].connect(regions["Mid Right"], rule=lambda state: state.has(gate_mid_right_top, player))
 
     regions["Mid Right"].connect(regions["Top"], rule=lambda state: state.has(gate_mid_right_top, player))
 
@@ -43,8 +42,7 @@ def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
             gate_bottom_left_mid_left,
             gate_mid_left_bottom_right,
             gate_mid_left_top,
-            gate_bottom_right_mid_right,
+            gate_mid_right_top,
             gate_bottom_right_boss,
-            gate_mid_right_top
         ]
         set_rule(world.get_location("Block Koala - Cherry"), rule=lambda state: state.has_all(all_gates, player))

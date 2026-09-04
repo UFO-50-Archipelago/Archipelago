@@ -1,6 +1,7 @@
 from typing import TYPE_CHECKING, NamedTuple
 
 from BaseClasses import ItemClassification as IC, Item
+from worlds.sc2.item import item_groups
 
 from ...constants import get_game_base_id
 from .locations import sphere_1_locs
@@ -14,21 +15,15 @@ class ItemInfo(NamedTuple):
     classification: IC
     quantity: int = 1
 
-
-gate_items: list[str] = [
-    "Start Gate",
-    "Bottom Left Gate",
-    "Centre Gate",
-    "Mid Left Gate",
-    "Mid Right Gate",
-    "Boss Gate",
-    "Top Right Gate",
-]
-
 item_table: dict[str, ItemInfo] = {
-    gate: ItemInfo(idx, IC.progression) for idx, gate in enumerate(gate_items)
+    "Start Gate": ItemInfo(0, IC.progression),
+    "Bottom Left Gate": ItemInfo(1, IC.progression),
+    "Centre Gate": ItemInfo(2, IC.progression),
+    "Mid Left Gate": ItemInfo(3, IC.progression),
+    "Top Right Gates": ItemInfo(4, IC.progression),
+    "Boss Gate": ItemInfo(6, IC.progression),
+    "Koala Fact": ItemInfo(101, IC.filler, quantity=44)
 }
-item_table["Koala Fact"] = ItemInfo(len(gate_items), IC.filler, quantity=43)
 
 
 def get_items() -> dict[str, int]:
@@ -36,12 +31,7 @@ def get_items() -> dict[str, int]:
 
 
 def get_item_groups() -> dict[str, set[str]]:
-    item_groups: dict[str, set[str]] = {
-        "Block Koala": {f"Block Koala - {item_name}" for item_name in item_table.keys()},
-        "Block Koala - Gates": {f"Block Koala - {gate}" for gate in gate_items},
-    }
-    return item_groups
-
+    return {"Block Koala": {f"Block Koala - {item_name}" for item_name in item_table.keys()}}
 
 def create_item(item_name: str, world: "UFO50World", item_class: IC = None) -> Item:
     base_id = get_game_base_id("Block Koala")
