@@ -86,6 +86,9 @@ location_table: dict[str, LocationInfo] = {
 }
 
 
+sphere_1_locs: list[str] = ["Level 01"]
+
+
 def get_locations() -> dict[str, int]:
     return {f"Block Koala - {name}": data.id_offset + get_game_base_id("Block Koala") for name, data in location_table.items()}
 

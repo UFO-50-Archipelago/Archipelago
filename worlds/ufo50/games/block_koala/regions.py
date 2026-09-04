@@ -10,6 +10,7 @@ if TYPE_CHECKING:
 
 
 regions: list[str] = [
+    "Menu",
     "Start",
     "Bottom Left",
     "Bottom Right",

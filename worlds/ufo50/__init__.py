@@ -342,6 +342,7 @@ class UFO50World(World):
             options.PorgyCheckOnTouch.internal_name: self.options.porgy_check_on_touch.value,
             options.PorgyRadar.internal_name: self.options.porgy_radar.value,
             options.PorgyLanternless.internal_name: self.options.porgy_lanternless.value,
+            options.BlockKoalaLevelRandomizer.internal_name: self.options.block_koala_level_randomizer.value,
         }
         return slot_data
 
