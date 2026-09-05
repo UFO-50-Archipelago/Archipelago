@@ -13,12 +13,13 @@ from . import options
 
 from .general_items import cartridge_items, cartridge_item_group
 
-from .games import barbuta, porgy, vainger, night_manor, party_house
+from .games import barbuta, porgy, vainger, night_manor, party_house, block_koala
 from .games.barbuta import items, locations, regions
 from .games.porgy import items, locations, regions
 from .games.vainger import items, locations, regions
 from .games.night_manor import items, locations, regions
 from .games.party_house import items, locations, regions
+from .games.block_koala import items, locations, regions
 
 
 def launch_client(*args: str):
@@ -85,6 +86,7 @@ class UFO50Web(WebWorld):
 # try to keep them in the same order as on the main menu
 ufo50_games: dict = {
     "Barbuta": barbuta,
+    "Block Koala": block_koala,
     "Porgy": porgy,
     "Vainger": vainger,
     "Night Manor": night_manor,
@@ -340,6 +342,7 @@ class UFO50World(World):
             options.PorgyCheckOnTouch.internal_name: self.options.porgy_check_on_touch.value,
             options.PorgyRadar.internal_name: self.options.porgy_radar.value,
             options.PorgyLanternless.internal_name: self.options.porgy_lanternless.value,
+            options.BlockKoalaLevelRandomizer.internal_name: self.options.block_koala_level_randomizer.value,
         }
         return slot_data
 

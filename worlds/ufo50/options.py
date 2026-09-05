@@ -160,6 +160,23 @@ class NMEarlyPin(DefaultOnToggle):
     display_name = "Night Manor - Early Hairpin"
 
 
+# Block Koala
+class BlockKoalaLevelRandomizer(Toggle):
+    """
+    Randomize the layout/order of levels in Block Koala. Does not affect logic.
+    """
+    internal_name = "block_koala_level_randomizer"
+    display_name = "Block Koala - Level Randomizer"
+
+
+class BlockKoalaEarlyStartGate(DefaultOnToggle):
+    """
+    If enabled, the Start Gate will be placed on Level 01.
+    """
+    internal_name = "block_koala_early_start_gate"
+    display_name = "Block Koala - Early Start Gate"
+
+
 @dataclass
 class UFO50Options(PerGameCommonOptions):
     start_inventory_from_pool: StartInventoryPool
@@ -178,6 +195,9 @@ class UFO50Options(PerGameCommonOptions):
 
     nm_early_pin: NMEarlyPin
 
+    block_koala_level_randomizer: BlockKoalaLevelRandomizer
+    block_koala_early_start_gate: BlockKoalaEarlyStartGate
+
 
 ufo50_option_groups = [
     OptionGroup("General Options", [
@@ -188,6 +208,10 @@ ufo50_option_groups = [
         GoalGames,
         GoalGameAmount,
         CherryAllowed,
+    ]),
+    OptionGroup("Block Koala Options", [
+        BlockKoalaLevelRandomizer,
+        BlockKoalaEarlyStartGate,
     ]),
     OptionGroup("Porgy Options", [
         PorgyFuelDifficulty,
