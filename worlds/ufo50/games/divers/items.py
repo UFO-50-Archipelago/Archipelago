@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, NamedTuple, Optional
+from typing import TYPE_CHECKING, NamedTuple
 
 from BaseClasses import ItemClassification as IC, Item
 
@@ -14,8 +14,9 @@ class ItemInfo(NamedTuple):
     quantity: int
     group: str
 
+
 item_table: dict[str, ItemInfo] = {
-    #Weapons
+    # Weapons
     "Slime Stick": ItemInfo(0, IC.filler, 0, "Weapons"),
     "Slime Lance": ItemInfo(1, IC.filler, 1, "Weapons"),
     "Slime Trident": ItemInfo(2, IC.progression, 1, "Weapons"),
@@ -43,38 +44,38 @@ item_table: dict[str, ItemInfo] = {
     "Elec Buckler": ItemInfo(47, IC.filler, 1, "Weapons"),
     "Elec Tower": ItemInfo(48, IC.progression, 1, "Weapons"),
     "Thorn Shield": ItemInfo(49, IC.progression, 1, "Weapons"),
-    #Potions
+    # Potions
     "Small Potion": ItemInfo(60, IC.filler, 1, "Potions"),
     "Medium Potion": ItemInfo(61, IC.filler, 1, "Potions"),
     "Large Potion": ItemInfo(62, IC.progression, 1, "Potions"),
     "Holy Potion": ItemInfo(63, IC.progression, 1, "Potions"),
     "Evil Potion": ItemInfo(64, IC.progression, 1, "Potions"),
     "Egg": ItemInfo(65, IC.filler, 1, "Potions"),
-    #Key
+    # Key
     "Bomb": ItemInfo(80, IC.progression, 1, "Key"),
     "Mist Orb": ItemInfo(81, IC.progression, 1, "Key"),
     "Flippers": ItemInfo(82, IC.useful, 1, "Key"),
     "Godblood": ItemInfo(83, IC.filler, 1, "Key"),
-    #XP/gold multiplier
+    # XP/Gold multiplier
     "Progressive Cash Mult": ItemInfo(90, IC.useful, 0, "Bonus"),
     "Progressive XP Mult": ItemInfo(95, IC.useful, 0, "Bonus"),
-    #levers
+    # Levers
     "Shallows Gate": ItemInfo(100, IC.progression, 1, "Key"),
     "Ruins Gate": ItemInfo(101, IC.progression, 1, "Key"),
     "Boss Gate 1": ItemInfo(102, IC.progression, 1, "Key"),
     "Boss Gate 2": ItemInfo(103, IC.progression, 1, "Key"),
-    #relics
+    # Relics
     "3 Fisheye": ItemInfo(110, IC.progression, 1, "Relic"),
     "3 Residue": ItemInfo(111, IC.progression, 4, "Relic"),
     "3 Roe": ItemInfo(112, IC.progression, 2, "Relic"),
     "3 Ingot": ItemInfo(113, IC.progression, 3, "Relic"),
     "3 Scale": ItemInfo(114, IC.progression, 1, "Relic"),
     "3 Cross": ItemInfo(115, IC.progression, 1, "Relic"),
-    #A relic is given by the ruins boss
-    "A relic": ItemInfo(116, IC.filler, 0, "Relic"),
-    "B relic": ItemInfo(117, IC.progression, 1, "Relic"),
-    #Emblems
-    "Barbuta Emblem" : ItemInfo(120, IC.progression, 1, "Key"),
+    # A relic is given by the ruins boss
+    "A Relic": ItemInfo(116, IC.filler, 0, "Relic"),
+    "B Relic": ItemInfo(117, IC.progression, 1, "Relic"),
+    # Emblems
+    "Barbuta Emblem": ItemInfo(120, IC.progression, 1, "Key"),
     "Divers Emblem": ItemInfo(121, IC.progression, 1, "Key"),
     "Mooncat Emblem": ItemInfo(122, IC.progression, 1, "Key"),
 }
@@ -125,7 +126,7 @@ def get_item_groups() -> dict[str, set[str]]:
             "Divers - Holy Potion",
             "Divers - Evil Potion",
             "Divers - Egg"},
-        "Divers - Key": {
+        "Divers - Keys": {
             "Divers - Bomb",
             "Divers - Mist Orb",
             "Divers - Flippers",
@@ -134,10 +135,10 @@ def get_item_groups() -> dict[str, set[str]]:
             "Divers - Ruins Gate",
             "Divers - Boss Gate 1",
             "Divers - Boss Gate 2"},
-        "Divers - Bonus": {
+        "Divers - Bonuses": {
             "Divers - Progressive Cash Mult",
             "Divers - Progressive XP Mult"},
-        "Divers - Relic": {
+        "Divers - Relics": {
             "Divers - 3 Fisheye",
             "Divers - 3 Residue",
             "Divers - 3 Roe",
