@@ -91,7 +91,7 @@ def get_item_groups() -> dict[str, set[str]]:
         f"Divers - {item_name}" for item_name in item_table.keys()}}
     item_groups.update({
         "Divers - Weapons": {
-            "Slime Stick",
+            "Divers - Slime Stick",
             "Divers - Slime Lance",
             "Divers - Slime Trident",
             "Divers - Shell Stick",
@@ -189,4 +189,4 @@ def create_items(world: "UFO50World") -> list[Item]:
 
 
 def get_filler_item_name(world: "UFO50World") -> str:
-    return "Divers - Progressive XP Mult"
+    return world.random.choice(["Divers - Slime Stick", "Divers - Shell Stick", "Divers - Elec Stick"])
