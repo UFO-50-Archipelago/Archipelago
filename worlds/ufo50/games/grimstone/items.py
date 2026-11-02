@@ -150,10 +150,10 @@ def create_items(world: "UFO50World") -> list[Item]:
     xp_item = 0
 
     while world.options.grimstone_cash_item > cash_item:
-       cash_item = cash_item + 1
+       cash_item += 1
 
-    while world.options.divers_xp_item > xp_item:
-        xp_item = xp_item + 1
+    while world.options.grimstone_xp_item > xp_item:
+        xp_item += 1
 
     items_to_create: dict[str, int] = {item_name: data.quantity for item_name, data in item_table.items()}
     items_to_create["Progressive Cash Mult"] = cash_item
