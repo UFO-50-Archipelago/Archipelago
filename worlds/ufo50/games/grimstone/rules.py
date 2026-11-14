@@ -8,8 +8,6 @@ if TYPE_CHECKING:
     from ... import UFO50World
 
 
-
-
 def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
     player = world.player
     menu = regions["Menu"]
@@ -25,7 +23,7 @@ def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
     abyss = "Grimstone - ABYSSIDIAN"
     menu.connect(pleasant)
     pleasant.connect(heston,
-                   rule=lambda state: state.has("Grimstone - TOOLBOX", player))
+                     rule=lambda state: state.has("Grimstone - TOOLBOX", player))
     heston.connect(auster,
                    rule=lambda state: state.has("Grimstone - PASS", player))
     auster.connect(basement,
@@ -35,11 +33,11 @@ def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
     auster.connect(serpent,
                    rule=lambda state: state.has("Grimstone - DETONATOR", player))
     serpent.connect(lawbuck,
-                   rule=lambda state: state.has("Grimstone - DEVIL HORN", player))
+                    rule=lambda state: state.has("Grimstone - DEVIL HORN", player))
     lawbuck.connect(tower,
-                   rule=lambda state: state.has("Grimstone - HORSESHOE", player))
+                    rule=lambda state: state.has("Grimstone - HORSESHOE", player))
     tower.connect(boss,
-                   rule=lambda state: state.has("Grimstone - HAMMER", player))
+                  rule=lambda state: state.has("Grimstone - HAMMER", player))
     pleasant.connect(regions["Pleasantshop"])
     heston.connect(regions["Hestonshop"])
     auster.connect(regions["Austershop"])

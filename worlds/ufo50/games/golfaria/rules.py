@@ -128,7 +128,7 @@ def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
     water = regions["Water"]
     boss = regions["Boss"]
 
-    handicap = float(100 + (10 * world.options.golfaria_handicap) / 100)
+    handicap = float((100 + 10 * world.options.golfaria_handicap) / 100)
     difficulty = world.options.golfaria_difficulty
 
     menu.connect(start)
@@ -136,7 +136,6 @@ def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
     forest.connect(temple)
     temple.connect(mountain)
     start.connect(desert)
-    start.connect(forest)
     start.connect(islands)
     start.connect(water)
 

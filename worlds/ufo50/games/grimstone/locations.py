@@ -1,4 +1,3 @@
-from enum import IntEnum
 from typing import TYPE_CHECKING, NamedTuple
 
 from BaseClasses import Region, Location, Item, ItemClassification
@@ -9,9 +8,11 @@ from ...constants import get_game_base_id
 if TYPE_CHECKING:
     from ... import UFO50World
 
+
 class LocationInfo(NamedTuple):
     id_offset: int
     region_name: str
+
 
 location_table: dict[str, LocationInfo] = {
     # Shallows
@@ -146,7 +147,7 @@ location_table: dict[str, LocationInfo] = {
     "Guano Mine Boss": LocationInfo(401, "Pleasant"),
     "Black Prison Boss": LocationInfo(402, "Heston"),
     "Fort Jason Boss": LocationInfo(403, "Auster"),
-# not eligible, Maria can't fight her    "Bad Betty Boss": LocationInfo(401, "Pleasant"),
+    # not eligible, Maria can't fight her    "Bad Betty Boss": LocationInfo(401, "Pleasant"),
     "Mission Angelina Boss": LocationInfo(405, "Basement"),
     "Serpent's Path Boss": LocationInfo(406, "Lawbuck"),
     "Spirit Realm Boss": LocationInfo(407, "Lawbuck"),
@@ -154,7 +155,7 @@ location_table: dict[str, LocationInfo] = {
     "Black Tower 2F Boss": LocationInfo(409, "Tower"),
     "Black Tower 3F Boss": LocationInfo(410, "Tower"),
     "Black Tower 4F Boss": LocationInfo(411, "Tower"),
-#doesn't work    "Final Boss": LocationInfo(412, "Boss"),
+    # doesn't work    "Final Boss": LocationInfo(412, "Boss"),
     "Auster Boss": LocationInfo(414, "Auster"),
     "Smugglers Pass Boss": LocationInfo(418, "Serpent"),
     "Black Citadel Boss 1": LocationInfo(420, "Boss"),

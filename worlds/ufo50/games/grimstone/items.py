@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, NamedTuple, Optional
+from typing import TYPE_CHECKING, NamedTuple
 
 from BaseClasses import ItemClassification as IC, Item
 
@@ -14,8 +14,9 @@ class ItemInfo(NamedTuple):
     quantity: int
     group: str
 
+
 item_table: dict[str, ItemInfo] = {
-    #Items
+    # Items
     "BANDHALF": ItemInfo(0, IC.filler, 0, "Items"),
     "BANDAGE": ItemInfo(1, IC.filler, 1, "Items"),
     "HERBHALF": ItemInfo(2, IC.filler, 0, "Items"),
@@ -40,7 +41,7 @@ item_table: dict[str, ItemInfo] = {
     "DOGTREAT E": ItemInfo(21, IC.filler, 1, "Items"),
     "k MINE": ItemInfo(22, IC.filler, 0, "Items"),
     "k FOCUS": ItemInfo(23, IC.filler, 0, "Items"),
-    #Weapons
+    # Weapons
     "a DERANGER": ItemInfo(30, IC.filler, 1, "Weapons"),
     "a PEPPRBOX": ItemInfo(31, IC.filler, 1, "Weapons"),
     "a SIDEWIND": ItemInfo(32, IC.filler, 2, "Weapons"),
@@ -70,7 +71,7 @@ item_table: dict[str, ItemInfo] = {
     "j WOOD": ItemInfo(56, IC.filler, 1, "Weapons"),
     "j RECURVE": ItemInfo(57, IC.filler, 1, "Weapons"),
     "j EAGLE": ItemInfo(58, IC.useful, 1, "Weapons"),
-    #Armor
+    # Armor
     "f BANDANA": ItemInfo(59, IC.filler, 1, "Armor"),
     "f BOLO": ItemInfo(60, IC.filler, 1, "Armor"),
     "f CHARM": ItemInfo(61, IC.filler, 1, "Armor"),
@@ -96,7 +97,7 @@ item_table: dict[str, ItemInfo] = {
     "i EELSKIN": ItemInfo(81, IC.filler, 1, "Armor"),
     "i GATOR": ItemInfo(82, IC.useful, 1, "Armor"),
     "i MOCASIN": ItemInfo(83, IC.useful, 2, "Armor"),
-    #Valuables
+    # Valuables
     "ABYSSIDIAN": ItemInfo(84, IC.progression, 1, "Key"),
     "DIAMOND": ItemInfo(85, IC.filler, 1, "Valuables"),
     "RUBY": ItemInfo(86, IC.filler, 1, "Valuables"),
@@ -105,9 +106,9 @@ item_table: dict[str, ItemInfo] = {
     "GOLD": ItemInfo(89, IC.filler, 1, "Valuables"),
     "SILVER": ItemInfo(90, IC.filler, 1, "Valuables"),
     "IRON ORE": ItemInfo(91, IC.filler, 1, "Valuables"),
-    #Key Items
+    # Key Items
     "TOOLBOX": ItemInfo(92, IC.progression, 1, "Key"),
-#    "LETTER": ItemInfo(93, IC.filler, 1, "Key"),
+    # "LETTER": ItemInfo(93, IC.filler, 1, "Key"),
     "M. MIRROR": ItemInfo(94, IC.progression, 1, "Key"),
     "RUSTY KEY": ItemInfo(95, IC.progression, 1, "Key"),
     "DETONATOR": ItemInfo(96, IC.progression, 1, "Key"),
@@ -116,7 +117,7 @@ item_table: dict[str, ItemInfo] = {
     "HAMMER": ItemInfo(99, IC.progression, 1, "Key"),
     "SCALE": ItemInfo(100, IC.progression, 1, "Key"),
     "PASS": ItemInfo(101, IC.progression, 1, "Key"),
-    #Bonus
+    # Bonus
     "Progressive Cash Mult": ItemInfo(200, IC.useful, 0, "Bonus"),
     "Progressive XP Mult": ItemInfo(201, IC.useful, 0, "Bonus"),
 }
@@ -166,4 +167,8 @@ def create_items(world: "UFO50World") -> list[Item]:
 
 
 def get_filler_item_name(world: "UFO50World") -> str:
-    return world.random.choice(["Grimstone - DOGTREAT A", "Grimstone - DOGTREAT D", "Grimstone - DOGTREAT E", "Grimstone - BANDAGE", "Grimstone - HERB", "Grimstone - OINTMENT", "Grimstone - MEDKIT", "Grimstone - ROOTBEER", "Grimstone - FEATHER", "Grimstone - SALT", "Grimstone - ANTIDOTE", "Grimstone - BEDROLLS", "Grimstone - HOLYWATER", "Grimstone - MINTLEAF"])
+    return world.random.choice(["Grimstone - DOGTREAT A", "Grimstone - DOGTREAT D", "Grimstone - DOGTREAT E",
+                                "Grimstone - BANDAGE", "Grimstone - HERB", "Grimstone - OINTMENT", "Grimstone - MEDKIT",
+                                "Grimstone - ROOTBEER", "Grimstone - FEATHER", "Grimstone - SALT",
+                                "Grimstone - ANTIDOTE", "Grimstone - BEDROLLS", "Grimstone - HOLYWATER",
+                                "Grimstone - MINTLEAF"])
