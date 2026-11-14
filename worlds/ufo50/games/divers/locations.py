@@ -1,4 +1,3 @@
-from enum import IntEnum
 from typing import TYPE_CHECKING, NamedTuple
 
 from BaseClasses import Region, Location, Item, ItemClassification
@@ -9,10 +8,12 @@ from ...constants import get_game_base_id
 if TYPE_CHECKING:
     from ... import UFO50World
 
+
 class LocationInfo(NamedTuple):
     id_offset: int
     region_name: str
     store_stock: int = 0
+
 
 location_table: dict[str, LocationInfo] = {
     # Shallows

@@ -150,6 +150,7 @@ class PorgyLanternless(Toggle):
     internal_name = "porgy_lanternless"
     display_name = "Porgy - Lanternless"
 
+
 # Night Manor
 class NMEarlyPin(DefaultOnToggle):
     """
@@ -158,7 +159,8 @@ class NMEarlyPin(DefaultOnToggle):
     internal_name = "nm_early_pin"
     display_name = "Night Manor - Early Hairpin"
 
-#Divers
+
+# Divers
 class DiversXp(Range):
     """
     Percentage of EXP enemies give you. 100 is vanilla, after scaling, and 300 is x3.
@@ -169,6 +171,7 @@ class DiversXp(Range):
     range_end = 300
     default = 100
 
+
 class DiversCash(Range):
     """
     Percentage of Cash enemies give you. 100 is vanilla, after scaling, and 300 is x3.
@@ -178,6 +181,7 @@ class DiversCash(Range):
     range_start = 100
     range_end = 300
     default = 200
+
 
 class DiversRelicMult(Range):
     """
@@ -190,6 +194,7 @@ class DiversRelicMult(Range):
     range_end = 9
     default = 3
 
+
 class DiversStoreDepth(Range):
     """
     Number of checks in each slot of the Store
@@ -199,6 +204,7 @@ class DiversStoreDepth(Range):
     range_start = 1
     range_end = 6
     default = 2
+
 
 class DiversXpItem(Range):
     """
@@ -211,6 +217,7 @@ class DiversXpItem(Range):
     range_end = 4
     default = 0
 
+
 class DiversCashItem(Range):
     """
     Choose how many Cash multiplier will be items
@@ -222,12 +229,14 @@ class DiversCashItem(Range):
     range_end = 4
     default = 0
 
+
 class DiversStartWithFlippers(Toggle):
     """
     If Enabled, the player will start with Flippers
     """
     internal_name = "divers_start_flippers"
     display_name = "Divers - Start With Flippers"
+
 
 class DiversPearl(Toggle):
     """
@@ -236,13 +245,15 @@ class DiversPearl(Toggle):
     internal_name = "divers_pearl"
     display_name = "Divers - Chests Have Pearls"
 
-#Golfaria
+
+# Golfaria
 class GolfariaStartWithBrakes(Toggle):
     """
     If Enabled, the player will start with Brakes
     """
     internal_name = "golfaria_start_brakes"
     display_name = "Golfaria - Start With Brakes"
+
 
 class GolfariaDifficulty(Range):
     """
@@ -259,6 +270,7 @@ class GolfariaDifficulty(Range):
     range_end = 4
     default = 1
 
+
 class GolfariaHandicap(Range):
     """
     Difficulty setting for amount of strokes, affects logic
@@ -267,6 +279,7 @@ class GolfariaHandicap(Range):
     internal_name = "golfaria_handicap"
     display_name = "Golfaria - Handicap"
     range_end = 5
+
 
 class GolfariaHardcoreStrokes(Range):
     """
@@ -280,7 +293,8 @@ class GolfariaHardcoreStrokes(Range):
     range_end = 20
     default = 20
 
-#Grimstone
+
+# Grimstone
 class GrimstoneXp(Range):
     """
     Percentage of EXP enemies give you. 100 is vanilla, and 300 is x3.
@@ -290,6 +304,7 @@ class GrimstoneXp(Range):
     range_start = 100
     range_end = 300
     default = 300
+
 
 class GrimstoneCash(Range):
     """
@@ -301,6 +316,7 @@ class GrimstoneCash(Range):
     range_end = 300
     default = 200
 
+
 class GrimstoneXpItem(Range):
     """
     Choose how many XP multipliers will be items
@@ -311,6 +327,7 @@ class GrimstoneXpItem(Range):
     default = 2
     range_end = 4
 
+
 class GrimstoneCashItem(Range):
     """
     Choose how many Cash multipliers will be items
@@ -320,6 +337,7 @@ class GrimstoneCashItem(Range):
     display_name = "Grimstone - Cash Multiplier Items"
     default = 2
     range_end = 4
+
 
 class GrimstoneShops(Range):
     """
@@ -335,6 +353,7 @@ class GrimstoneShops(Range):
     range_end = 2
     default = 0
 
+
 class GrimstoneRandomCharacters(Toggle):
     """
     Start Grimstone with random characters
@@ -342,12 +361,14 @@ class GrimstoneRandomCharacters(Toggle):
     internal_name = "grimstone_random_characters"
     display_name = "Grimstone - Random Characters"
 
+
 class GrimstoneDuplicateCharacters(Toggle):
     """
     Allow duplicate characters in Grimstone
     """
     internal_name = "grimstone_duplicate_characters"
     display_name = "Grimstone - Duplicate Characters"
+
 
 @dataclass
 class UFO50Options(PerGameCommonOptions):
@@ -388,6 +409,7 @@ class UFO50Options(PerGameCommonOptions):
     grimstone_shops: GrimstoneShops
     grimstone_random_characters: GrimstoneRandomCharacters
     grimstone_duplicate_characters: GrimstoneDuplicateCharacters
+
 
 ufo50_option_groups = [
     OptionGroup("General Options", [

@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, NamedTuple, Optional
+from typing import TYPE_CHECKING, NamedTuple
 
 from BaseClasses import ItemClassification as IC, Item
 
@@ -14,8 +14,9 @@ class ItemInfo(NamedTuple):
     quantity: int
     group: str
 
+
 item_table: dict[str, ItemInfo] = {
-    #Weapons
+    # Weapons
     "Slime Stick": ItemInfo(0, IC.filler, 1, "Weapons"),
     "Slime Lance": ItemInfo(1, IC.progression, 1, "Weapons"),
     "Slime Trident": ItemInfo(2, IC.progression, 1, "Weapons"),
@@ -43,22 +44,22 @@ item_table: dict[str, ItemInfo] = {
     "Elec Buckler": ItemInfo(47, IC.progression, 1, "Weapons"),
     "Elec Tower": ItemInfo(48, IC.progression, 1, "Weapons"),
     "Thorn Shield": ItemInfo(49, IC.progression, 1, "Weapons"),
-    #Potions
+    # Potions
     "Small Potion": ItemInfo(60, IC.filler, 1, "Potions"),
     "Medium Potion": ItemInfo(61, IC.filler, 1, "Potions"),
     "Large Potion": ItemInfo(62, IC.progression, 1, "Potions"),
     "Holy Potion": ItemInfo(63, IC.progression, 1, "Potions"),
     "Evil Potion": ItemInfo(64, IC.progression, 1, "Potions"),
     "Egg": ItemInfo(65, IC.filler, 1, "Potions"),
-    #Key
+    # Key
     "Bomb": ItemInfo(80, IC.progression, 1, "Key"),
     "Mist Orb": ItemInfo(81, IC.progression, 1, "Key"),
     "Flippers": ItemInfo(82, IC.progression, 1, "Key"),
     "Godblood": ItemInfo(83, IC.filler, 1, "Key"),
-    #XP/gold multiplier
+    # XP/gold multiplier
     "Progressive Cash Mult": ItemInfo(90, IC.useful, 0, "Bonus"),
     "Progressive XP Mult": ItemInfo(95, IC.useful, 0, "Bonus"),
-    #gates
+    # gates
     "Slime Cave Gate": ItemInfo(100, IC.progression, 1, "Key"),
     "Ruins North Gate": ItemInfo(101, IC.progression, 1, "Key"),
     "Boss Gate 1": ItemInfo(102, IC.progression, 1, "Key"),
@@ -66,7 +67,7 @@ item_table: dict[str, ItemInfo] = {
     "Ruins Northeast Gate": ItemInfo(104, IC.progression, 1, "Key"),
     "Ruins Southeast Gate": ItemInfo(105, IC.progression, 1, "Key"),
     "Ruins Southwest Gate": ItemInfo(106, IC.progression, 1, "Key"),
-    #relics
+    # relics
     "Fisheye": ItemInfo(110, IC.filler, 1, "Relic"),
     "Residue": ItemInfo(111, IC.filler, 1, "Relic"),
     "Roe": ItemInfo(112, IC.filler, 1, "Relic"),
@@ -74,14 +75,14 @@ item_table: dict[str, ItemInfo] = {
     "Scale": ItemInfo(114, IC.filler, 1, "Relic"),
     "Cross": ItemInfo(115, IC.filler, 1, "Relic"),
     "500 Cash": ItemInfo(118, IC.filler, 1, "Relic"),
-    #A relic is given by the ruins boss
+    # A relic is given by the ruins boss
     "A relic": ItemInfo(116, IC.filler, 0, "Relic"),
     "B relic": ItemInfo(117, IC.progression, 1, "Relic"),
-    #Emblems
+    # Emblems
     "Barbuta Emblem" : ItemInfo(120, IC.progression, 1, "Key"),
     "Mooncat Emblem": ItemInfo(121, IC.progression, 1, "Key"),
     "Divers Emblem": ItemInfo(122, IC.progression, 1, "Key"),
-    #Store Access
+    # Store Access
     # start with sticks
     "Mallets Store Page": ItemInfo(131, IC.progression, 1, "Key"),
     "Lids Store Page": ItemInfo(132, IC.progression, 1, "Key"),
@@ -195,4 +196,5 @@ def create_items(world: "UFO50World") -> list[Item]:
 
 
 def get_filler_item_name(world: "UFO50World") -> str:
-    return world.random.choice(["Divers - Fisheye", "Divers - Residue", "Divers - Roe", "Divers - Ingot", "Divers - Scale", "Divers - Cross", "Divers - 500 Cash"])
+    return world.random.choice(["Divers - Fisheye", "Divers - Residue", "Divers - Roe", "Divers - Ingot",
+                                "Divers - Scale", "Divers - Cross", "Divers - 500 Cash"])
