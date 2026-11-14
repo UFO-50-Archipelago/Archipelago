@@ -1,22 +1,105 @@
+# from enum import IntFlag, auto
+import math
 from typing import TYPE_CHECKING
 
-from BaseClasses import Region, CollectionState
-import math
+from BaseClasses import Region
 from rule_builder import rules
-from worlds.ufo50.options import GolfariaStartWithBrakes
+
+from worlds.ufo50.options import GolfariaStartWithBrakes, GolfariaDifficulty
 
 if TYPE_CHECKING:
     from ... import UFO50World
 
-brakes = "Golfaria - Brakes"
+
+# This would be a good way to rewrite and clean up this file
+# basically turn it into a big list of rules to loop through instead of writing it out manually
+#
+# class Pow(IntFlag):
+#     NONE = 0
+#     BRAKES = auto()
+#     BLOCK = auto()
+#     SAND = auto()
+#     WATER = auto()
+#
+#
+# class DifficultyRules:
+#     def __init__(self, strokes: int, powerups: int):
+#         self.strokes: int = strokes
+#         self.powerups: int = powerups
+#
+#
+# class PowerupRules:
+#
+#     @staticmethod
+#     # take items from the secondary list and add them to the primary if its powerup requirement differs
+#     def merge_lists(primary: list[DifficultyRules], secondary: list[DifficultyRules]) -> list[DifficultyRules]:
+#         items_to_add: list[DifficultyRules] = []
+#         for rule_set2 in secondary:
+#             for rule_set in primary:
+#                 if rule_set2.powerups == rule_set.powerups:
+#                     break
+#             else:
+#                 items_to_add.append(rule_set2)
+#         return primary + items_to_add
+#
+#     easy: list[DifficultyRules]
+#     medium: list[DifficultyRules]
+#     hard: list[DifficultyRules]
+#
+#     def __init__(self, easy: DifficultyRules | list[DifficultyRules],
+#                  medium: DifficultyRules | list[DifficultyRules],
+#                  hard: DifficultyRules | list[DifficultyRules],
+#                  hardcore=None):
+#
+#         self.easy = list(easy)
+#
+#         if medium:
+#             self.medium = self.merge_lists(list(medium), self.easy)
+#         else:
+#             self.medium = self.easy
+#
+#         if hard:
+#             self.hard = self.merge_lists(list(hard), self.medium)
+#         else:
+#             self.hard = self.medium
+#
+#         self.hardcore = hardcore
+#
+#
+# rules_dict: dict[str, dict[str, PowerupRules]] = {
+#     "Calm Cave": {
+#         "Driver Depths Club": PowerupRules(
+#             easy=[
+#                 DifficultyRules(32, Pow.BRAKES),
+#                 DifficultyRules(18, Pow.BLOCK)
+#             ],
+#             medium=DifficultyRules(22, Pow.BRAKES),
+#             hard=DifficultyRules(17, Pow.BRAKES)
+#         )
+#     },
+#
+#     "Gur Grotto": {
+#         "Mt Driver Parabot": PowerupRules(
+#             easy=DifficultyRules(32, Pow.BRAKES),
+#             medium=DifficultyRules(24, Pow.BRAKES),
+#             hard=DifficultyRules(17, Pow.BRAKES)
+#         ),
+#         "Tee Temple Holy Tee": PowerupRules(
+#             easy=DifficultyRules(8, Pow.BRAKES | Pow.WATER),
+#             medium=[],
+#             hard=[]
+#         )
+#     },
+# }
 
 
 def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
-    player = world.player
     water = "Golfaria - Water Roll"
     sand = "Golfaria - Sand Roll"
     block = "Golfaria - Block Buster"
     club = "Golfaria - Club"
+    brakes = "Golfaria - Brakes"
+
     brakestemp1 = [rules.OptionFilter(GolfariaStartWithBrakes, GolfariaStartWithBrakes.option_true)]
     brakestemp2 = rules.Has(brakes)
     hasbrakes = brakestemp1 | brakestemp2
@@ -42,11 +125,12 @@ def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
     mountain = regions["Mountain"]
     desert = regions["Desert"]
     islands = regions["Islands"]
-    #water = regions["Water"]
+    water = regions["Water"]
     boss = regions["Boss"]
-    handicaptemp = 100 + (10 * world.options.golfaria_handicap)
-    handicap = float(handicaptemp / 100)
+
+    handicap = float(100 + (10 * world.options.golfaria_handicap) / 100)
     difficulty = world.options.golfaria_difficulty
+
     menu.connect(start)
     start.connect(forest)
     forest.connect(temple)
@@ -54,7 +138,35 @@ def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
     start.connect(desert)
     start.connect(forest)
     start.connect(islands)
-    start.connect(regions["Water"])
+    start.connect(water)
+
+    # def clubs_needed(amount: int, handi: bool = False) -> rules.Has:
+    #     if handi:
+    #         return rules.Has(club, count=math.ceil(((amount * handicap) - 20) / 3))
+    #     return rules.Has(club, count=amount)
+    #
+    # this would be part of the rewrite if it happens
+    # def get_powerup_rule_from_flags(powerups: int):
+    #     flag_rules: list[rules.Rule] = []
+    #     if Pow.BRAKES in powerups:
+    #         flag_rules.append(hasbrakes)
+    #     if Pow.BLOCK in powerups:
+    #         flag_rules.append(hasblock)
+    #     if Pow.SAND in powerups:
+    #         flag_rules.append(hassand)
+    #     if Pow.WATER in powerups:
+    #         flag_rules.append(haswater)
+    #     return flag_rules
+    #
+    # for origin, destinations in rules_dict.items():
+    #     for destination, dest_rules in destinations.items():
+    #         if difficulty == GolfariaDifficulty.easy:
+    #             rule_list = [
+    #                 (clubs_needed(rule.strokes) & get_powerup_rule_from_flags(rule.powerups))
+    #                 for rule in dest_rules.easy
+    #             ]
+    #             world.add_rule(world.get_location(f"Golfaria - {destination}"), any(rule_list))
+
     clubsneeded = rules.Has(club, count=math.ceil(((53 * handicap) - 20) / 3))
     temprule = hasbrakes & hasblock & hassand & haswater & hastee & clubsneeded
     world.create_entrance(temple, boss, temprule)
@@ -261,7 +373,8 @@ def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
         temprule = hasbrakes & hassand
         world.set_rule(world.get_location("Golfaria - Sandy Sinkhole B NPC"), temprule)
         world.set_rule(world.get_location("Golfaria - Ocean Pit NPC"), haswater)
-    if difficulty == 2:
+
+    if difficulty == GolfariaDifficulty.option_medium:
         world.set_rule(world.get_location("Golfaria - Calm Cave Checkpoint Location"), hasbrakes)
         world.set_rule(world.get_location("Golfaria - Rooted Route Checkpoint Location"), hasbrakes)
         temprule = hasbrakes & hasblock
@@ -449,7 +562,8 @@ def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
         temprule = hasbrakes & hassand
         world.set_rule(world.get_location("Golfaria - Sandy Sinkhole B NPC"), temprule)
         world.set_rule(world.get_location("Golfaria - Ocean Pit NPC"), haswater)
-    if difficulty == 3:
+
+    if difficulty == GolfariaDifficulty.option_hard:
         temprule = hasbrakes & hasblock
         world.set_rule(world.get_location("Golfaria - Tee Temple Checkpoint Location"), temprule)
         clubsneeded = rules.Has(club, count=math.ceil(((17 * handicap) - 20) / 3))
@@ -649,7 +763,8 @@ def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
         temprule3 = temprule | temprule2
         world.set_rule(world.get_location("Golfaria - Sandy Sinkhole B NPC"), temprule3)
         world.set_rule(world.get_location("Golfaria - Ocean Pit NPC"), haswater)
-    if difficulty == 4:
+
+    if difficulty == GolfariaDifficulty.option_hardcore:
         strokes = world.options.golfaria_hardcore_strokes
         temprule = hasbrakes & hasblock
         world.set_rule(world.get_location("Golfaria - Tee Temple Checkpoint Location"), temprule)

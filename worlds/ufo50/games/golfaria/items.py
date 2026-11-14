@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, NamedTuple, Optional
+from typing import TYPE_CHECKING, NamedTuple
 
 from BaseClasses import ItemClassification as IC, Item
 
@@ -12,6 +12,7 @@ class ItemInfo(NamedTuple):
     id_offset: int
     classification: IC
     quantity: int
+
 
 item_table: dict[str, ItemInfo] = {
     "Club": ItemInfo(0, IC.progression, 20),
@@ -45,6 +46,7 @@ item_table: dict[str, ItemInfo] = {
     "Winding Wetway Checkpoint": ItemInfo(108, IC.progression, 1),
     "Bunker Below Checkpoint": ItemInfo(109, IC.progression, 1),
 }
+
 
 # this is for filling out item_name_to_id, it should be static regardless of yaml options
 def get_items() -> dict[str, int]:

@@ -9,9 +9,11 @@ from ...constants import get_game_base_id
 if TYPE_CHECKING:
     from ... import UFO50World
 
+
 class LocationInfo(NamedTuple):
     id_offset: int
     region_name: str
+
 
 location_table: dict[str, LocationInfo] = {
     "Underputt Club 1": LocationInfo(1, "Start"),
@@ -60,7 +62,7 @@ location_table: dict[str, LocationInfo] = {
     "Block Buster Location": LocationInfo(51, "Temple"),
     "Water Roll Location": LocationInfo(52, "Desert"),
     "Sand Roll Location": LocationInfo(53, "Islands"),
-#    "Waking Cave Checkpoint Location": LocationInfo(100, "Islands"),   Starting checkpoint, do not use
+    # "Waking Cave Checkpoint Location": LocationInfo(100, "Islands"),   Starting checkpoint, do not use
     "Wise Ball's Cave Checkpoint Location": LocationInfo(101, "Start"),
     "Calm Cave Checkpoint Location": LocationInfo(102, "Start"),
     "Gur Grotto Checkpoint Location": LocationInfo(103, "Start"),
